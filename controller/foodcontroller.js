@@ -1,10 +1,10 @@
 // Import the database connection pool
-const pool = require('../db/fooddb');
+const pool = require('../config/dbconnection');
 
 // Create a new food item
 const createFood = (req, res) => {
-  const { name, description, image_url } = req.body;
-  pool.query('INSERT INTO food (name, description, image_url) VALUES (?, ?, ?)', [name, description, image_url], (error, results) => {
+  const { name, describtion,category } = req.body;
+  pool.query('INSERT INTO food (name, describtion,category) VALUES (?, ?, ?)', [name, describtion,category], (error, results) => {
     if (error) throw error;
     res.send('Food item created');
   });
@@ -30,8 +30,8 @@ const getFoodById = (req, res) => {
 // Update a food item
 const updateFood = (req, res) => {
   const foodId = req.params.id;
-  const { name, description, image_url } = req.body;
-  pool.query('UPDATE food SET name = ?, description = ?, image_url = ? WHERE id = ?', [name, description, image_url, foodId], (error, results) => {
+  const { name, describtion, category } = req.body;
+  pool.query('UPDATE food SET name = ?, describtion = ?, category = ? WHERE id = ?', [name, describtion, category, foodId], (error, results) => {
     if (error) throw error;
     res.send('Food item updated');
   });
@@ -54,3 +54,4 @@ module.exports = {
   updateFood,
   deleteFood
 };
+

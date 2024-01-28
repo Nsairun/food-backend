@@ -7,7 +7,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: 'Nsairun24',
-  database: 'FOODDB',
+  database: 'your_database_nameoffood',
   connectionLimit: 10, // Adjust the connection limit as per your needs
 });
 
